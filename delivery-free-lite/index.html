@@ -10,26 +10,33 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- ========================= CSS here ========================= -->
-    <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-alpha-2.min.css" />
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-alpha-2.min.css" /> -->
     <link rel="stylesheet" href="assets/css/LineIcons.2.0.css" />
     <link rel="stylesheet" href="assets/css/animate.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <!-- Add Tailwind CDN and custom theme config for orange -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              themeorange: '#ff8800',
-              themeblack: '#181818',
-              themewhite: '#fff',
-              themegrey: '#f7f7f7',
-            }
-          }
-        }
-      }
-    </script>
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          themeorange: '#ff8800',
+          themeblack: '#181818',
+          themewhite: '#ffffff',
+          themegrey: '#f7f7f7',
+        },
+      },
+    },
+    variants: {
+      extend: {
+        backgroundColor: ['hover'],
+        textColor: ['hover'],
+      },
+    },
+  }
+</script>
+
   </head>
   <body class="bg-themegrey text-themeblack">
     <!--[if lte IE 9]>
@@ -61,85 +68,109 @@
 		
 
     <!-- ========================= header start ========================= -->
-    <header class="header">
-      <div class="navbar-area">
-        <div class="container px-10">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="index.html">
-                  <img src="assets/img/logo/logo.svg" alt="Logo" />
-                </a>
-                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                </button> -->
+<header class="bg-themewhite shadow-md fixed w-full top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="assets/img/logo/logo.svg" alt="Logo" class="h-8" />
+        <!-- <span class="font-bold text-lg text-themeblack">YourBrand</span> -->
+      </a>
 
-                <!-- <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <ul id="nav" class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                      <a class="page-scroll" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="page-scroll" href="#how">How It Works</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="page-scroll" href="#testimonial">Testimonials</a>
-                    </li>
-                  </ul>
-                </div> -->
-                <!-- navbar collapse -->
-              </nav>
-              <!-- navbar -->
-            </div>
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="#home" class="text-themeblack hover:text-themeorange font-medium">Home</a>
+        <a href="#about" class="text-themeblack hover:text-themeorange font-medium">About</a>
+        <a href="#contact" class="text-themeblack hover:text-themeorange font-medium">Contact</a>
+
+        <!-- Dropdown Example -->
+        <div class="relative group">
+          <button class="text-themeblack hover:text-themeorange font-medium focus:outline-none">
+            More
+          </button>
+          <div class="absolute hidden group-hover:block mt-2 w-40 bg-themewhite rounded-md shadow-lg z-10">
+            <a href="#services" class="block px-4 py-2 text-sm text-themeblack hover:bg-themegrey">Services</a>
+            <a href="#faq" class="block px-4 py-2 text-sm text-themeblack hover:bg-themegrey">FAQs</a>
           </div>
-          <!-- row -->
         </div>
-        <!-- container -->
+
+        <!-- Download App Button -->
+        <a href="#" class="bg-themeorange text-themewhite px-4 py-2 rounded-md hover:bg-themeorange transition font-medium">
+  Download App
+</a>
+
+      </nav>
+
+      <!-- Hamburger for Mobile -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-themeblack focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
-      <!-- navbar area -->
-    </header>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-themewhite shadow-md px-4 py-4">
+    <a href="#home" class="block py-2 text-themeblack hover:text-themeorange">Home</a>
+    <a href="#about" class="block py-2 text-themeblack hover:text-themeorange">About</a>
+    <a href="#contact" class="block py-2 text-themeblack hover:text-themeorange">Contact</a>
+    <a href="#services" class="block py-2 text-themeblack hover:text-themeorange">Services</a>
+    <a href="#faq" class="block py-2 text-themeblack hover:text-themeorange">FAQs</a>
+    <a href="#" class="block mt-2 bg-themeorange text-themewhite text-center py-2 rounded-md hover:bg-opacity-90">
+      Download App
+    </a>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+
     <!-- ========================= header end ========================= -->
 
     <!-- ========================= hero-section start ========================= -->
 
 	
-  <section id="home" class="bg-[#f7f7f7] relative py-20">
-  <!-- Shape Image (optional decorative) -->
+<section id="home" class="bg-themegrey relative min-h-screen flex items-center pt-32 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+  <!-- Decorative Background Image -->
   <div class="absolute inset-0 z-0 opacity-10">
     <img src="./../img1.jpg" alt="Shape" class="w-full h-full object-cover">
   </div>
 
-  <div class="container mx-auto px-6 relative z-10">
-    <div class="flex flex-col-reverse lg:flex-row items-center">
+  <div class="w-full max-w-7xl mx-auto relative z-10">
+    <div class="flex flex-col-reverse lg:flex-row items-center gap-12">
       
       <!-- Left Content -->
-      <div class="w-full lg:w-1/2 mt-10 lg:mt-0">
+      <div class="w-full lg:w-1/2">
         <div class="space-y-6">
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight wow fadeInUp" data-wow-delay=".2s">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-themeblack leading-snug wow fadeInUp" data-wow-delay=".2s">
             Digitize Your Political Outreach.<br>
             Build, Manage, and Mobilize Your Community.
           </h1>
-          <p class="text-gray-700 text-lg wow fadeInUp" data-wow-delay=".4s">
+          <p class="text-gray-700 text-base sm:text-lg wow fadeInUp" data-wow-delay=".4s">
             A dedicated mobile platform for political leaders and parties to engage voters, empower volunteers, and manage ground-level operations digitally.
           </p>
-          <p class="text-themeorange font-semibold text-xl wow fadeInUp" data-wow-delay=".5s">
+          <p class="text-themeorange font-semibold text-lg sm:text-xl wow fadeInUp" data-wow-delay=".5s">
             राजनीति अब कागज़ों पर नहीं, मोबाइल ऐप पर होती है।
           </p>
 
-          <!-- Buttons -->
+          <!-- CTA Buttons -->
           <div class="flex flex-wrap gap-4 wow fadeInUp" data-wow-delay=".6s">
-            <a href="#contact" class="main-btn btn-hover bg-themeorange text-themewhite border-0 px-6 py-3 rounded-md shadow-md hover:shadow-lg transition">
+            <a href="#contact" class="bg-themeorange text-themewhite border-0 px-6 py-3 rounded-md shadow-md hover:shadow-lg transition font-medium">
               Request a Free Demo
             </a>
-            <a href="#contact" class="main-btn btn-hover bg-themewhite text-themeorange border border-themeorange px-6 py-3 rounded-md hover:shadow-md transition">
+            <a href="#contact" class="bg-themewhite text-themeorange border border-themeorange px-6 py-3 rounded-md hover:shadow-md transition font-medium">
               Contact Our Team
             </a>
           </div>
@@ -148,322 +179,303 @@
 
       <!-- Right Image -->
       <div class="w-full lg:w-1/2 flex justify-center wow fadeInUp" data-wow-delay=".5s">
-        <img src="./../img1.jpg" alt="Hero Image" class="max-w-full h-auto rounded-md">
+        <img src="./../img1.jpg" alt="Hero Image" class="w-full max-w-md h-auto rounded-md shadow-lg">
       </div>
     </div>
   </div>
 </section>
+
 
 		<!-- ========================= hero-section end ========================= -->
 
 <!-- ========================= service-section start ========================= -->
-<section id="services" class="service-section pt-150 pb-120" style="background-color: #fff;">
-  <div class="container px-3 px-md-5">
-    <div class="row justify-content-center">
-      <div class="col-xl-6 col-lg-8">
-        <div class="section-title text-center mb-70">
-          <span class="wow fadeInUp " style="color:#ff8800;" data-wow-delay=".2s">Why Choose This App</span>
-          <h1 class="wow fadeInUp text-themeorange" data-wow-delay=".4s">A Strategic Digital Platform Built for Political Success</h1>
-          <p class="wow fadeInUp" data-wow-delay=".5s">This app is designed to modernize political operations at every level.</p>
-        </div>
-      </div>
+<section id="services" class="bg-themewhite relative py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Section Heading -->
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <span class="block text-themeorange font-semibold text-base sm:text-lg wow fadeInUp" data-wow-delay=".2s">
+        Why Choose This App
+      </span>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-themeorange mt-2 wow fadeInUp" data-wow-delay=".4s">
+        A Strategic Digital Platform Built for Political Success
+      </h2>
+      <p class="text-gray-600 mt-4 text-base sm:text-lg wow fadeInUp" data-wow-delay=".5s">
+        This app is designed to modernize political operations at every level.
+      </p>
     </div>
 
-    <div class="row gy-4">
-      <!-- Service Card -->
-      <div class="col-lg-4 col-md-6">
-        <div class="single-service wow fadeInUp h-100 text-center px-4 py-4 border rounded shadow-sm" data-wow-delay=".2s">
-          <div class="icon d-flex justify-content-center align-items-center mb-1" style="height: 60px;">
-            <i class="lni lni-users text-themeorange" style="font-size: 2.5rem;"></i>
-          </div>
-          <h4 class="mb-2">Digital Voter Engagement</h4>
-          <p>Personalized content and real-time communication with your voters, all in one place.</p>
+    <!-- Service Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="bg-white text-left p-6 border rounded-lg shadow-sm wow fadeInUp" data-wow-delay=".2s">
+        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-themeorange bg-opacity-10 mb-4">
+          <i class="lni lni-users text-themeorange text-2xl"></i>
         </div>
+        <h4 class="text-lg font-semibold mb-2">Digital Voter Engagement</h4>
+        <p class="text-gray-600">Personalized content and real-time communication with your voters, all in one place.</p>
       </div>
 
-      <div class="col-lg-4 col-md-6">
-        <div class="single-service wow fadeInUp h-100 text-center px-4 py-4 border rounded shadow-sm" data-wow-delay=".4s">
-          <div class="icon d-flex justify-content-center align-items-center mb-1" style="height: 60px;">
-            <i class="lni lni-network text-themeorange" style="font-size: 2.5rem;"></i>
-          </div>
-          <h4 class="mb-2">Volunteer Tracking</h4>
-          <p>Monitor volunteer activity and performance metrics for effective grassroots management.</p>
+      <!-- Card 2 -->
+      <div class="bg-white text-left p-6 border rounded-lg shadow-sm wow fadeInUp" data-wow-delay=".3s">
+        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-themeorange bg-opacity-10 mb-4">
+          <i class="lni lni-network text-themeorange text-2xl"></i>
         </div>
+        <h4 class="text-lg font-semibold mb-2">Volunteer Tracking</h4>
+        <p class="text-gray-600">Monitor volunteer activity and performance metrics for effective grassroots management.</p>
       </div>
 
-      <div class="col-lg-4 col-md-6">
-        <div class="single-service wow fadeInUp h-100 text-center px-4 py-4 border rounded shadow-sm" data-wow-delay=".6s">
-          <div class="icon d-flex justify-content-center align-items-center mb-1" style="height: 60px;">
-            <i class="lni lni-bar-chart text-themeorange" style="font-size: 2.5rem;"></i>
-          </div>
-          <h4 class="mb-2">Constituency Insights</h4>
-          <p>Access data-driven insights into demographics and past election results for better strategy.</p>
+      <!-- Card 3 -->
+      <div class="bg-white text-left p-6 border rounded-lg shadow-sm wow fadeInUp" data-wow-delay=".4s">
+        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-themeorange bg-opacity-10 mb-4">
+          <i class="lni lni-bar-chart text-themeorange text-2xl"></i>
         </div>
+        <h4 class="text-lg font-semibold mb-2">Constituency Insights</h4>
+        <p class="text-gray-600">Access data-driven insights into demographics and past election results for better strategy.</p>
       </div>
 
-      <div class="col-lg-4 col-md-6">
-        <div class="single-service wow fadeInUp h-100 text-center px-4 py-4 border rounded shadow-sm" data-wow-delay=".2s">
-          <div class="icon d-flex justify-content-center align-items-center mb-1" style="height: 60px;">
-            <i class="lni lni-bullhorn text-themeorange" style="font-size: 2.5rem;"></i>
-          </div>
-          <h4 class="mb-2">Media Distribution</h4>
-          <p>Centralized platform for leader branding, public outreach, and media sharing.</p>
+      <!-- Card 4 -->
+      <div class="bg-white text-left p-6 border rounded-lg shadow-sm wow fadeInUp" data-wow-delay=".5s">
+        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-themeorange bg-opacity-10 mb-4">
+          <i class="lni lni-bullhorn text-themeorange text-2xl"></i>
         </div>
+        <h4 class="text-lg font-semibold mb-2">Media Distribution</h4>
+        <p class="text-gray-600">Centralized platform for leader branding, public outreach, and media sharing.</p>
       </div>
 
-      <div class="col-lg-4 col-md-6">
-        <div class="single-service wow fadeInUp h-100 text-center px-4 py-4 border rounded shadow-sm" data-wow-delay=".4s">
-          <div class="icon d-flex justify-content-center align-items-center mb-1" style="height: 60px;">
-            <i class="lni lni-mobile text-themeorange" style="font-size: 2.5rem;"></i>
-          </div>
-          <h4 class="mb-2">Event & Programme Promotion</h4>
-          <p>Simplified tools to promote events, programmes, and press materials digitally.</p>
+      <!-- Card 5 -->
+      <div class="bg-white text-left p-6 border rounded-lg shadow-sm wow fadeInUp" data-wow-delay=".6s">
+        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-themeorange bg-opacity-10 mb-4">
+          <i class="lni lni-mobile text-themeorange text-2xl"></i>
         </div>
+        <h4 class="text-lg font-semibold mb-2">Event & Programme Promotion</h4>
+        <p class="text-gray-600">Simplified tools to promote events, programmes, and press materials digitally.</p>
       </div>
     </div>
 
     <!-- Hindi CTA -->
-    <div class="row mt-5">
-      <div class="col-12 text-center">
-        <h3 class="text-themeorange mb-1">मोबाइल से जोड़िए जनता से</h3>
-        <p class="font-semibold text-themeorange mb-0">आंकड़ों से जीतिए</p>
-      </div>
+    <div class="mt-16 text-center wow fadeInUp" data-wow-delay=".7s">
+      <h3 class="text-2xl font-bold text-themeorange mb-1">मोबाइल से जोड़िए जनता से</h3>
+      <p class="text-lg font-medium text-themeorange">आंकड़ों से जीतिए</p>
     </div>
+
   </div>
 </section>
+
 
 <!-- ========================= service-section end ========================= -->
 
 <!-- ========================= about-section start ========================= -->
-<section id="about" class="about-section pt-150 pb-120" style="background-color: #f7f7f7;">
-  <div class="container px-3 px-md-5">
-    <div class="row align-items-center">
-      <div class="col-lg-6 mb-4 mb-lg-0">
-        <div class="about-img wow fadeInUp" data-wow-delay=".5s">
-          <img src="./../img2.jpg" alt="About Image" class="img-fluid rounded shadow">
+<section id="about" class="bg-themegrey py-20 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10">
+    
+    <!-- Image Column -->
+    <div class="w-full lg:w-1/2 wow fadeInUp" data-wow-delay=".5s">
+      <img src="./../img2.jpg" alt="About Image" class="rounded-lg shadow-lg w-full h-auto object-cover">
+    </div>
+
+    <!-- Content Column -->
+    <div class="w-full lg:w-1/2 space-y-6">
+      <div class="space-y-4">
+        <span class="text-themeorange font-semibold text-base sm:text-lg wow fadeInUp" data-wow-delay=".2s">
+          Built for Political Leaders, Candidates, and Parties
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-themeorange wow fadeInUp" data-wow-delay=".4s">
+          Not Just an App — A Complete Political Management Ecosystem
+        </h2>
+        <div class="text-gray-700 text-base sm:text-lg space-y-3 wow fadeInUp" data-wow-delay=".6s">
+          <p><strong>For Candidates:</strong> Build your presence and connect directly with voters</p>
+          <p><strong>For Sitting MLAs/MPs:</strong> Track field activity and showcase your achievements</p>
+          <p><strong>For Political Parties:</strong> Manage booth-level operations and volunteer networks</p>
+          <p><strong>For Youth and Volunteer Cells:</strong> Organize, onboard, and monitor party workers effectively</p>
         </div>
+        <p class="text-themeorange font-semibold text-lg sm:text-xl wow fadeInUp" data-wow-delay=".7s">
+          नेता वही, जो तकनीक से आगे बढ़े।
+        </p>
       </div>
-      <div class="col-lg-6">
-        <div class="about-content">
-          <div class="section-title">
-            <span class="wow fadeInUp " style="color:#ff8800;" data-wow-delay=".2s">Built for Political Leaders, Candidates, and Parties</span>
-            <h1 class="wow fadeInUp text-themeorange" data-wow-delay=".4s">Not Just an App — A Complete Political Management Ecosystem</h1>
-            <p class="wow fadeInUp" data-wow-delay=".6s">
-              <b>For Candidates:</b> Build your presence and connect directly with voters<br>
-              <b>For Sitting MLAs/MPs:</b> Track field activity and showcase your achievements<br>
-              <b>For Political Parties:</b> Manage booth-level operations and volunteer networks<br>
-              <b>For Youth and Volunteer Cells:</b> Organize, onboard, and monitor party workers effectively
-            </p>
-            <p class="wow fadeInUp text-themeorange font-semibold" data-wow-delay=".7s">नेता वही, जो तकनीक से आगे बढ़े।</p>
-          </div>
-          <div class="rating-meta d-flex align-items-center mt-3 wow fadeInUp" data-wow-delay=".75s">
-            <h5 class="me-3">Trusted by Political Leaders</h5>
-            <div class="rating">
-              <i class="lni lni-star-filled text-themeorange"></i>
-              <i class="lni lni-star-filled text-themeorange"></i>
-              <i class="lni lni-star-filled text-themeorange"></i>
-              <i class="lni lni-star-filled text-themeorange"></i>
-              <i class="lni lni-star-filled text-themeorange"></i>
-            </div>
-          </div>
+
+      <!-- Ratings -->
+      <div class="flex items-center gap-4 mt-4 wow fadeInUp" data-wow-delay=".75s">
+        <h5 class="text-base font-medium text-themeblack">Trusted by Political Leaders</h5>
+        <div class="flex space-x-1">
+          <i class="lni lni-star-filled text-themeorange"></i>
+          <i class="lni lni-star-filled text-themeorange"></i>
+          <i class="lni lni-star-filled text-themeorange"></i>
+          <i class="lni lni-star-filled text-themeorange"></i>
+          <i class="lni lni-star-filled text-themeorange"></i>
         </div>
       </div>
     </div>
+
   </div>
 </section>
+
 <!-- ========================= about-section end ========================= -->
 
 		<!-- ========================= about-section end ========================= -->
 
 		<!-- ========================= delivery-section start ========================= -->
-<section id="how" class="delivery-section py-20" style="background-color: #fff;">
-  <div class="container-fluid px-6 md:px-20">
+<!-- ========================= HOW SECTION ========================= -->
+<section id="how" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
     <!-- Heading -->
-    <div class="row justify-content-center mb-5">
-      <div class="col-xl-8 col-lg-10 text-center">
-        <span class="d-block  text-lg font-medium mb-2 wow fadeInUp" style="color:#ff8800;" data-wow-delay=".2s">
-          Core Features Overview
-        </span>
-        <h1 class="text-3xl md:text-4xl font-bold wow fadeInUp" data-wow-delay=".4s">
-          Everything You Need in One Platform
-        </h1>
-      </div>
+    <div class="text-center mb-12">
+      <span class="text-themeorange text-lg font-medium block wow fadeInUp" data-wow-delay=".2s">
+        Core Features Overview
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-themeblack wow fadeInUp" data-wow-delay=".4s">
+        Everything You Need in One Platform
+      </h2>
     </div>
 
     <!-- Feature Cards Grid -->
-    <div class="row gx-4 gy-5">
-      <!-- CARD 1 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="single-service p-4 h-100 border rounded shadow-sm wow fadeInUp" data-wow-delay=".2s">
-          <div class="icon mb-3">
-            <i class="lni lni-users text-themeorange" style="font-size: 2.5rem;"></i>
-          </div>
-          <h4 class="mb-3">Voter/Supporter Onboarding</h4>
-          <ul class="list-disc ps-4 text-sm text-gray-700 space-y-1">
-            <li>Secure mobile number login via OTP</li>
-            <li>Google/Apple social sign-in</li>
-            <li>Profile registration with zone, booth, ward</li>
-            <li>Verified user database with real-time access</li>
-          </ul>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- CARD TEMPLATE -->
+      <div class="p-6 border rounded shadow-sm wow fadeInUp" data-wow-delay=".2s">
+        <div class="mb-4">
+          <i class="lni lni-users text-themeorange text-4xl"></i>
         </div>
+        <h4 class="text-lg font-semibold mb-3">Voter/Supporter Onboarding</h4>
+        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+          <li>Secure mobile number login via OTP</li>
+          <li>Google/Apple social sign-in</li>
+          <li>Profile registration with zone, booth, ward</li>
+          <li>Verified user database with real-time access</li>
+        </ul>
       </div>
 
-      <!-- CARD 2 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="single-service p-4 h-100 border rounded shadow-sm wow fadeInUp" data-wow-delay=".3s">
-          <div class="icon mb-3">
-            <i class="lni lni-bubble text-themeorange" style="font-size: 2.5rem;"></i>
-          </div>
-          <h4 class="mb-3">Engagement Tools</h4>
-          <ul class="list-disc ps-4 text-sm text-gray-700 space-y-1">
-            <li>Leader messages, stories, and news</li>
-            <li>Interactive opinion polls</li>
-            <li>Push notifications & shareable content</li>
-            <li>Digital invites for events</li>
-          </ul>
+      <!-- Repeat similar card structure for other features -->
+      <div class="p-6 border rounded shadow-sm wow fadeInUp" data-wow-delay=".3s">
+        <div class="mb-4">
+          <i class="lni lni-bubble text-themeorange text-4xl"></i>
         </div>
+        <h4 class="text-lg font-semibold mb-3">Engagement Tools</h4>
+        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+          <li>Leader messages, stories, and news</li>
+          <li>Interactive opinion polls</li>
+          <li>Push notifications & shareable content</li>
+          <li>Digital invites for events</li>
+        </ul>
       </div>
 
-      <!-- CARD 3 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="single-service p-4 h-100 border rounded shadow-sm wow fadeInUp" data-wow-delay=".4s">
-          <div class="icon mb-3">
-            <i class="lni lni-bar-chart text-themeorange" style="font-size: 2.5rem;"></i>
-          </div>
-          <h4 class="mb-3">Constituency Intelligence</h4>
-          <ul class="list-disc ps-4 text-sm text-gray-700 space-y-1">
-            <li>Age, gender, turnout data</li>
-            <li>Booth & ward-level analysis</li>
-            <li>Historical MLA/MP data</li>
-            <li>Election insights with visuals</li>
-          </ul>
+      <div class="p-6 border rounded shadow-sm wow fadeInUp" data-wow-delay=".4s">
+        <div class="mb-4">
+          <i class="lni lni-bar-chart text-themeorange text-4xl"></i>
         </div>
+        <h4 class="text-lg font-semibold mb-3">Constituency Intelligence</h4>
+        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+          <li>Age, gender, turnout data</li>
+          <li>Booth & ward-level analysis</li>
+          <li>Historical MLA/MP data</li>
+          <li>Election insights with visuals</li>
+        </ul>
       </div>
 
-      <!-- CARD 4 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="single-service p-4 h-100 border rounded shadow-sm wow fadeInUp" data-wow-delay=".5s">
-          <div class="icon mb-3">
-            <i class="lni lni-network text-themeorange" style="font-size: 2.5rem;"></i>
-          </div>
-          <h4 class="mb-3">Volunteer Management</h4>
-          <ul class="list-disc ps-4 text-sm text-gray-700 space-y-1">
-            <li>Add and manage team members</li>
-            <li>Detailed volunteer profiles</li>
-            <li>Status filters: pending, completed</li>
-            <li>Performance graphs</li>
-          </ul>
+      <div class="p-6 border rounded shadow-sm wow fadeInUp" data-wow-delay=".5s">
+        <div class="mb-4">
+          <i class="lni lni-network text-themeorange text-4xl"></i>
         </div>
+        <h4 class="text-lg font-semibold mb-3">Volunteer Management</h4>
+        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+          <li>Add and manage team members</li>
+          <li>Detailed volunteer profiles</li>
+          <li>Status filters: pending, completed</li>
+          <li>Performance graphs</li>
+        </ul>
       </div>
 
-      <!-- CARD 5 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="single-service p-4 h-100 border rounded shadow-sm wow fadeInUp" data-wow-delay=".6s">
-          <div class="icon mb-3">
-            <i class="lni lni-bullhorn text-themeorange" style="font-size: 2.5rem;"></i>
-          </div>
-          <h4 class="mb-3">Leader Branding Tools</h4>
-          <ul class="list-disc ps-4 text-sm text-gray-700 space-y-1">
-            <li>Political journey highlights</li>
-            <li>Milestone timeline</li>
-            <li>Photos, videos, speeches</li>
-            <li>Press releases</li>
-            <li>Digital membership card</li>
-          </ul>
+      <div class="p-6 border rounded shadow-sm wow fadeInUp" data-wow-delay=".6s">
+        <div class="mb-4">
+          <i class="lni lni-bullhorn text-themeorange text-4xl"></i>
         </div>
+        <h4 class="text-lg font-semibold mb-3">Leader Branding Tools</h4>
+        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+          <li>Political journey highlights</li>
+          <li>Milestone timeline</li>
+          <li>Photos, videos, speeches</li>
+          <li>Press releases</li>
+          <li>Digital membership card</li>
+        </ul>
       </div>
     </div>
 
     <!-- Hindi Tagline -->
-    <div class="row mt-5">
-      <div class="col-12 text-center">
-        <h3 class="text-themeorange font-semibold wow fadeInUp" data-wow-delay=".7s">
-          हर कार्यकर्ता के हाथ में शक्ति, हर नेता के पास डेटा।
-        </h3>
-      </div>
+    <div class="mt-12 text-center">
+      <h3 class="text-themeorange font-semibold text-xl wow fadeInUp" data-wow-delay=".7s">
+        हर कार्यकर्ता के हाथ में शक्ति, हर नेता के पास डेटा।
+      </h3>
     </div>
   </div>
 </section>
 
-		<!-- ========================= delivery-section end ========================= -->
+<!-- ========================= RECEIVED SECTION ========================= -->
+<section id="received" class="bg-themegrey py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12">
+    
+    <!-- Image Column -->
+    <div class="w-full lg:w-1/2 wow fadeInUp" data-wow-delay=".5s">
+      <img src="./../Wavy_Bus-07_Single-03.jpg" alt="Strategic Advantage" class="w-full h-auto rounded shadow-md object-cover">
+    </div>
 
-		<!-- ========================= about-section start ========================= -->
-<section id="received" class="received-section py-20 bg-[#f7f7f7]">
-  <div class="container-fluid px-6 md:px-20">
-    <div class="row items-center">
-      <!-- Image Column -->
-      <div class="col-lg-6 mb-10 lg:mb-0">
-        <div class="about-img received-img wow fadeInUp" data-wow-delay=".5s">
-          <!-- Add cache-busting parameter to image URL -->
-          <img src="./../Wavy_Bus-07_Single-03.jpg" alt="Strategic Advantage" class="w-full h-auto object-cover rounded shadow-md">
-        </div>
-      </div>
-
-      <!-- Content Column -->
-      <div class="col-lg-6">
-        <div class="received-content">
-          <div class="section-title">
-            <span class=" text-lg font-medium block mb-2 wow fadeInUp" style="color:#ff8800;" data-wow-delay=".2s">
-              Your Strategic Advantage
-            </span>
-            <h1 class="text-3xl md:text-4xl font-bold mb-6 wow fadeInUp" data-wow-delay=".4s">
-              Built to Match Political Ground Realities
-            </h1>
-            <p class="text-gray-700 mb-4 wow fadeInUp" data-wow-delay=".6s">
-              Designed based on real-world feedback from party workers and campaign teams.
-            </p>
-            <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4 wow fadeInUp" data-wow-delay=".65s">
-              <li>Fully secure with data ownership retained by your organization</li>
-              <li>Fast deployment with customization for your logo, branding, and language</li>
-              <li>Made in India, scalable across districts and states</li>
-            </ul>
-            <p class="text-[#ff8800] font-semibold text-lg wow fadeInUp" data-wow-delay=".7s">
-              अब हर बूथ से कनेक्शन होगा डिजिटल, हर फ़ैसला होगा विजनल।
-            </p>
-          </div>
-        </div>
-      </div>
+    <!-- Content Column -->
+    <div class="w-full lg:w-1/2 space-y-5">
+      <span class="text-themeorange text-lg font-medium block wow fadeInUp" data-wow-delay=".2s">
+        Your Strategic Advantage
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-themeblack wow fadeInUp" data-wow-delay=".4s">
+        Built to Match Political Ground Realities
+      </h2>
+      <p class="text-gray-700 text-base sm:text-lg wow fadeInUp" data-wow-delay=".6s">
+        Designed based on real-world feedback from party workers and campaign teams.
+      </p>
+      <ul class="list-disc list-inside text-gray-700 text-base space-y-2 wow fadeInUp" data-wow-delay=".65s">
+        <li>Fully secure with data ownership retained by your organization</li>
+        <li>Fast deployment with customization for your logo, branding, and language</li>
+        <li>Made in India, scalable across districts and states</li>
+      </ul>
+      <p class="text-themeorange font-semibold text-lg wow fadeInUp" data-wow-delay=".7s">
+        अब हर बूथ से कनेक्शन होगा डिजिटल, हर फ़ैसला होगा विजनल।
+      </p>
     </div>
   </div>
 </section>
+
 
 		<!-- ========================= about-section end ========================= -->
 
 		<!-- ========================= testimonial-section start ========================= -->
-	<section  class="testimonial-section img-bg pt-36 pb-20" style="background-color: #fff;">
-  <div class="container px-4 sm:px-6 lg:px-16">
-    
+<!-- ========================= Testimonial Section ========================= -->
+<section class="testimonial-section img-bg pt-20 pb-20 bg-white">
+  <div class="container px-4 sm:px-6 lg:px-20">
     <!-- Section Heading -->
     <div class="row justify-content-center mb-12">
       <div class="col-lg-6 text-center">
         <div class="section-title">
-          <span class="wow fadeInUp " style="color:#ff8800;" data-wow-delay=".2s">Testimonials</span>
-          <h1 class="wow fadeInUp mt-2" data-wow-delay=".4s">What Our Users Say</h1>
+          <span class="text-themeorange text-lg font-medium wow fadeInUp" data-wow-delay=".2s">Testimonials</span>
+          <h1 class="mt-2 text-3xl font-bold wow fadeInUp" data-wow-delay=".4s">What Our Users Say</h1>
         </div>
       </div>
     </div>
 
-    <!-- Testimonials Row -->
-    <div class="row testimonial-wrapper gap-y-10">
-      
-      <!-- Testimonial 1 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="single-testimonial wow fadeInUp h-full" data-wow-delay=".2s">
-          <div class="rating mb-2">
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-          </div>
-          <div class="content mb-4">
-            <p>“This platform helped us manage our volunteers and outreach efforts during the campaign with unmatched ease.”</p>
-          </div>
-          <div class="info flex items-center gap-4">
-            <div class="image">
-              <img src="assets/img/testimonial/testimonial-1.png" alt="">
+    <!-- Testimonials Grid -->
+    <div class="flex flex-wrap justify-center gap-6">
+      <!-- Card 1 -->
+      <div class="w-full sm:w-[48%] lg:w-[31%]">
+        <div class="single-testimonial wow fadeInUp h-full flex flex-col justify-between p-6 border rounded shadow-sm" data-wow-delay=".2s">
+          <div>
+            <div class="rating mb-2">
+              <i class="lni lni-star-filled text-themeorange"></i>
+              <i class="lni lni-star-filled text-themeorange"></i>
+              <i class="lni lni-star-filled text-themeorange"></i>
+              <i class="lni lni-star-filled text-themeorange"></i>
+              <i class="lni lni-star-filled text-themeorange"></i>
             </div>
-            <div class="text">
+            <p class="mb-4">“This platform helped us manage our volunteers and outreach efforts during the campaign with unmatched ease.”</p>
+          </div>
+          <div class="info flex items-center gap-4 mt-auto pt-4 border-t">
+            <img src="assets/img/testimonial/testimonial-1.png" alt="User 1" class="w-12 h-12 rounded-full object-cover">
+            <div>
               <h5 class="font-semibold">Party Strategist</h5>
               <p class="text-sm text-gray-500">Bihar Assembly</p>
             </div>
@@ -471,98 +483,83 @@
         </div>
       </div>
 
-      <!-- Testimonial 2 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="single-testimonial wow fadeInUp h-full" data-wow-delay=".4s">
-          <div class="rating mb-2">
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-          </div>
-          <div class="content mb-4">
-            <p>“We finally have a digital solution that complements the speed of modern politics.”</p>
-          </div>
-          <div class="info flex items-center gap-4">
-            <div class="image">
-              <img src="assets/img/testimonial/testimonial-2.png" alt="">
+      <!-- Card 2 -->
+      <div class="w-full sm:w-[48%] lg:w-[31%]">
+        <div class="single-testimonial wow fadeInUp h-full flex flex-col justify-between p-6 border rounded shadow-sm" data-wow-delay=".4s">
+          <div>
+            <div class="rating mb-2">
+              <i class="lni lni-star-filled text-themeorange"></i>
+              <i class="lni lni-star-filled text-themeorange"></i>
+              <i class="lni lni-star-filled text-themeorange"></i>
+              <i class="lni lni-star-filled text-themeorange"></i>
+              <i class="lni lni-star-filled text-themeorange"></i>
             </div>
-            <div class="text">
+            <p class="mb-4">“We finally have a digital solution that complements the speed of modern politics.”</p>
+          </div>
+          <div class="info flex items-center gap-4 mt-auto pt-4 border-t">
+            <img src="assets/img/testimonial/testimonial-2.png" alt="User 2" class="w-12 h-12 rounded-full object-cover">
+            <div>
               <h5 class="font-semibold">Sitting MLA</h5>
               <p class="text-sm text-gray-500">Maharashtra</p>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Testimonial 3 -->
-      <div class="col-lg-4 col-md-6">
-        <div class="single-testimonial wow fadeInUp h-full" data-wow-delay=".6s">
-          <div class="rating mb-2">
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-            <i class="lni lni-star-filled text-themeorange"></i>
-          </div>
-          <div class="content mb-4">
-            <p class="font-semibold">ऐप में जो ताक़त है, वो जीत दिला सकती है।</p>
-          </div>
-          <div class="info flex items-center gap-4">
-            <div class="image">
-              <img src="assets/img/testimonial/testimonial-3.png" alt="">
-            </div>
-            <div class="text">
-              <h5 class="font-semibold">—</h5>
-              <p class="text-sm text-gray-500">Political Worker</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
+
+    <!-- Hindi CTA Line -->
+    <p class="text-themeorange font-semibold text-lg text-center mt-10 wow fadeInUp" data-wow-delay=".7s">
+      ऐप में जो ताक़त है, वो जीत दिला सकती है।
+    </p>
   </div>
 </section>
 
-
-<section id="cta" class="cta-section pt-120 pb-100" style="background-color: #f7f7f7;">
-  <div class="container px-4 sm:px-6 lg:px-8">
+<!-- ========================= CTA Section ========================= -->
+<!-- ========================= CTA Section ========================= -->
+<section id="cta" class="cta-section pt-20 pb-24 bg-[#f7f7f7]">
+  <div class="container px-4 sm:px-6 lg:px-20">
     <div class="row justify-content-center">
       <div class="col-xl-8 col-lg-10 text-center">
-        
         <!-- Section Title -->
         <div class="section-title mb-5">
-          <span class="d-block wow fadeInUp" style="color:#ff8800;" data-wow-delay=".2s">
+          <span class="text-themeorange text-lg font-medium wow fadeInUp" data-wow-delay=".2s">
             Final Call to Action
           </span>
-          <h1 class="wow fadeInUp text-themeorange mt-3 mb-3" data-wow-delay=".4s">
+          <h1 class="text-3xl md:text-4xl font-bold text-themeorange mt-3 mb-3 wow fadeInUp" data-wow-delay=".4s">
             Let’s Build Your Digital Political Base — Together
           </h1>
-          <p class="wow fadeInUp text-muted mb-4" data-wow-delay=".5s">
+          <p class="text-gray-600 mb-4 wow fadeInUp" data-wow-delay=".5s">
             Schedule a demo to see how this app can transform your outreach, ground-level organization, and digital brand.
           </p>
         </div>
 
         <!-- CTA Buttons -->
-        <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mb-4 wow fadeInUp" data-wow-delay=".6s">
-          <a href="#contact" class="main-btn btn-hover bg-themeorange text-themewhite border-0 px-4 py-3 rounded">
+        <div class="flex flex-col sm:flex-row justify-center gap-3 mb-4 wow fadeInUp" data-wow-delay=".6s">
+          <!-- Button 1 -->
+          <a href="#contact"
+             class="px-6 py-3 rounded bg-themeorange text-white font-medium hover:bg-[#e67300] transition duration-300">
             Schedule Free Demo
           </a>
-          <a href="#contact" class="main-btn btn-hover bg-themewhite text-themeorange border border-themeorange px-4 py-3 rounded">
-            Contact Our Sales Team
-          </a>
+
+          <!-- ✅ Button 2 (Fixed Hover Issue) -->
+         <a href="#contact"
+   class="px-6 py-3 rounded bg-white text-themeorange border border-themeorange font-medium transition duration-300 
+          hover:bg-themeorange/10 hover:shadow-lg hover:scale-105">
+  Contact Our Sales Team
+</a>
+
         </div>
 
         <!-- Hindi Line -->
-        <p class="text-themeorange fw-semibold wow fadeInUp" data-wow-delay=".7s">
+        <p class="text-themeorange font-semibold wow fadeInUp" data-wow-delay=".7s">
           आपका नाम, आपकी पहचान, अब हर मोबाइल में।
         </p>
-
       </div>
     </div>
   </div>
 </section>
+
+
 
     <!-- ========================= testimonial-section end ========================= -->
 
@@ -596,73 +593,80 @@
 		<!-- ========================= partners-section end ========================= -->
 
     <!-- ========================= footer start ========================= -->
-  <footer id="footer" class="footer pt-24 pb-16" style="background-color: #181818;">
-  <div class="footer-shape">
-    <img src="assets/img/footer/footer-left.svg" alt="" class="shape shape-1">
-    <img src="assets/img/footer/footer-right.svg" alt="" class="shape shape-2">
-  </div>
+ <footer id="footer" class="footer pt-24 pb-8 bg-themeblack text-white">
+  <div class="container mx-auto px-5 sm:px-8 lg:px-24">
 
-  <div class="container mx-auto px-6">
     <!-- Top Footer -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-white">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-12">
 
-      <!-- Column 1: Logo + About -->
+      <!-- Column 1: About the App -->
       <div>
-        <div class="logo mb-4">
+        <div class="logo mb-5">
           <a href="index.html">
             <img src="assets/img/logo/logo-2.svg" alt="logo" class="w-32">
           </a>
         </div>
-        <h3 class="text-lg font-semibold text-white">About the App</h3>
+        <h3 class="text-lg font-semibold mb-3">About the App</h3>
+        <p class="text-sm text-gray-300 leading-relaxed">
+          A powerful platform to simplify political outreach, booth management, and digital engagement.
+        </p>
       </div>
 
       <!-- Column 2: Privacy -->
       <div>
-        <h3 class="text-lg font-semibold mb-3 text-white">Privacy & Policy</h3>
-        <ul class="space-y-2 text-sm text-gray-300">
+        <h3 class="text-lg font-semibold mb-3">Privacy & Policy</h3>
+        <ul class="space-y-2 text-sm text-gray-300 leading-relaxed">
           <li><a href="#" class="hover:text-white">Privacy and Security Policy</a></li>
         </ul>
       </div>
 
       <!-- Column 3: Additional -->
       <div>
-        <h3 class="text-lg font-semibold mb-3 text-white">Additional</h3>
-        <ul class="space-y-2 text-sm text-gray-300">
+        <h3 class="text-lg font-semibold mb-3">Additional</h3>
+        <ul class="space-y-2 text-sm text-gray-300 leading-relaxed">
           <li><a href="#" class="hover:text-white">Case Studies (on request)</a></li>
           <li><a href="mailto:info@yourappname.com" class="hover:text-white">Contact: info@yourappname.com</a></li>
         </ul>
       </div>
 
-      <!-- Column 4: Connect -->
+      <!-- Column 4: Social Icons -->
       <div>
-        <h3 class="text-lg font-semibold mb-3 text-white">Connect</h3>
-        <ul class="space-y-2 text-sm text-gray-300">
-          <li><a href="https://linkedin.com" target="_blank" class="hover:text-white">LinkedIn</a></li>
-          <li><a href="https://twitter.com" target="_blank" class="hover:text-white">Twitter</a></li>
-          <li><a href="https://yourwebsite.com" target="_blank" class="hover:text-white">Website</a></li>
-        </ul>
+        <h3 class="text-lg font-semibold mb-3">Connect</h3>
+        <div class="flex space-x-4 mt-2">
+          <a href="https://linkedin.com" target="_blank" class="text-gray-300 hover:text-white text-xl">
+            <i class="lni lni-linkedin-original"></i>
+          </a>
+          <a href="https://twitter.com" target="_blank" class="text-gray-300 hover:text-white text-xl">
+            <i class="lni lni-twitter-original"></i>
+          </a>
+          <a href="https://yourwebsite.com" target="_blank" class="text-gray-300 hover:text-white text-xl">
+            <i class="lni lni-world"></i>
+          </a>
+        </div>
       </div>
 
     </div>
 
     <!-- Bottom Footer -->
-    <div class="mt-12 text-center text-sm text-gray-400">
+    <div class="mt-14 pt-6 border-t border-gray-700 text-center text-sm text-gray-400">
       <p>© 2025 Your Company Name. All rights reserved.</p>
     </div>
   </div>
 </footer>
 
+
+
     <!-- ========================= footer end ========================= -->
 
     <!-- ========================= scroll-top ========================= -->
-    <a href="#" class="scroll-top btn-hover bg-themeorange text-themewhite">
+    <!-- <a href="#" class="scroll-top btn-hover bg-themeorange text-themewhite">
       <i class="lni lni-chevron-up"></i>
-    </a>
+    </a> -->
 
     <!-- ========================= JS here ========================= -->
-    <script src="assets/js/bootstrap.5.0.0.alpha-2-min.js"></script>
+    <!-- <script src="assets/js/bootstrap.5.0.0.alpha-2-min.js"></script>
     <script src="assets/js/count-up.min.js"></script>
     <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script> -->
   </body>
 </html>
